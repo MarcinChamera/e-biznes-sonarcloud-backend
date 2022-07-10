@@ -21,7 +21,6 @@ func main() {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 
-	// curl http://localhost:1323/products
 	e.GET("/products", func(c echo.Context) error {
 		var products []models.Product
 		db.Find(&products)
@@ -38,16 +37,6 @@ func main() {
 
 		return c.JSON(http.StatusOK, product)
 	})
-
-	// curl -v -d "{""name"": ""PlayStation 5"", ""price"":3500, ""image_url"":""https://images.morele.net/full/5944164_0_f.jpg""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
-	// curl -v -d "{""name"": ""Iphone 13"", ""price"":5000, ""image_url"":""https://images.morele.net/full/9059212_0_f.jpg""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
-	// curl -v -d "{""name"": ""Monitor Samsung Odyssey G7"", ""price"":2500, ""image_url"":""https://images.morele.net/full/8326769_0_f.jpg""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
-	// curl -v -d "{""name"": ""Słuchawki Sennheiser HD 560S"", ""price"":700, ""image_url"":""https://images.morele.net/full/8392026_2_f.jpg""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
-
-	// curl -v -d "{""name"": ""PlayStation 5"", ""price"":3500, ""icon_name"":""games""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
-	// curl -v -d "{""name"": ""Iphone 13"", ""price"":5000, ""icon_name"":""phone_iphone""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
-	// curl -v -d "{""name"": ""Monitor Samsung Odyssey G7"", ""price"":2500, ""icon_name"":""monitor""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
-	// curl -v -d "{""name"": ""Słuchawki Sennheiser HD 560S"", ""price"":700, ""icon_name"":""headphones""}" -H "Content-Type: application/json" -X POST http://localhost:1323/products
 
 	e.POST("/products", func(c echo.Context) error {
 		product := new(models.Product)
